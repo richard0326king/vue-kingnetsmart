@@ -1,24 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HomeRouter from '@/pages/home'
-import Page1Router from '@/pages/page1'
-import Page2Router from '@/pages/page2'
-
+import communityManagerInfoRouter from '@/pages/communityManagerInfo'
+import communityManagerInfoSubmitRouter from '@/pages/communityManagerInfoSubmit'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '',
-      component:HomeRouter
-    },{
-      path: '/page1',
-      component: Page1Router
+  routes: [{
+      path: '/',
+      component: communityManagerInfoRouter
     },
     {
-      path: '/page2',
-      component: Page2Router
+      path: '/communityManagerInfoSubmitRouter',
+      component: communityManagerInfoSubmitRouter
     }
 
   ]
