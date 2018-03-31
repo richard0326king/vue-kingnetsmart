@@ -45,15 +45,11 @@
                 image: null,
                 imageUrl: '',
                 list: [{
-                        i: "pic1",
+                        i: "Banner1",
                         url: ""
                     },
                     {
-                        i: "pic2",
-                        url: ""
-                    },
-                    {
-                        i: "pic3",
+                        i: "Banner2",
                         url: ""
                     }
                 ]

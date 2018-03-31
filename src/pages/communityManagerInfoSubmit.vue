@@ -29,9 +29,9 @@
                     <label class="col-lg-2 control-label">公告類型*</label>
                     <div class="col-lg-5">
                         <select id="annType" class="form-control floatL">
-                                                    <option value="">法律知識</option>
-                                                    <option value="">生活服務</option>
-                                            </select>
+                                                        <option value="">法律知識</option>
+                                                        <option value="">生活服務</option>
+                                                </select>
                     </div>
                 </div>
                 <!-- /公告類型 -->
@@ -52,9 +52,9 @@
                     <label class="col-lg-2 control-label" for="annStatus">是否上架</label>
                     <div class="col-lg-2">
                         <label class="cr-styled" style="padding-top: 8px;">
-                                                                <input type="checkbox" id="annStatus" runat="server" />
-                                                                <i class="glyphicon"></i>
-                                                            </label>
+                                                                    <input type="checkbox" id="annStatus" runat="server" />
+                                                                    <i class="glyphicon"></i>
+                                                                </label>
                     </div>
                 </div>
                 <!-- /狀態 -->
@@ -63,16 +63,16 @@
                     <label class="col-lg-2 control-label" for="annIsTop">是否置頂</label>
                     <div class="col-lg-2">
                         <label class="cr-styled" style="padding-top: 8px;">
-                                                                <input type="checkbox" id="annIsTop" runat="server" />
-                                                                <i class="glyphicon"></i>
-                                                            </label>
+                                                                    <input type="checkbox" id="annIsTop" runat="server" />
+                                                                    <i class="glyphicon"></i>
+                                                                </label>
                     </div>
                 </div>
                 <!-- /狀態 -->
                 <!-- 內容 -->
                 <div class="form-group">
                     <label class="col-lg-2 control-label">內容*</label>
-                    <div class="col-lg-5">
+                    <div class="col-lg-10">
                         <ckeditor id="1" v-model="content" :config="config" @blur="onBlur($event)" @focus="onFocus($event)">
                         </ckeditor>
                     </div>
@@ -107,8 +107,9 @@
                 content1: '',
                 config: {
                     toolbar: [
-                        ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']
+                        ["Bold", "Italic", "-", "NumberedList", "BulletedList", "-", "Outdent", "Indent", "-", "CreateDiv", "-", "BidiLtr", "BidiRtl", "-", "Link", "Unlink", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock", "-", "Table", "Styles", "Format", "Font", "FontSize", "TextColor", "BGColor", "-", "Image", "Source"]
                     ],
+                    skin: 'kama',
                     height: 300
                 }
             }

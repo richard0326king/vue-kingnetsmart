@@ -1,10 +1,8 @@
 <template>
     <div id="app">
-    
         <!-- Console -->
         <div id="showConsole" class="modal-basic">
             <div class="modal-header header">
-    
                 <h4 class="modal-title">推播社區狀態</h4>
             </div>
             <div id="console_txt" class="household-select" style="overflow-y: auto; max-height: 300px;">
@@ -39,17 +37,17 @@
                         <th>公告類型</th>
                         <td>
                             <select class="form-control floatL" id="type">
-                                <option value="請選擇">請選擇</option>
-                            </select>
+                                    <option value="請選擇">請選擇</option>
+                                </select>
                         </td>
                         <th>狀態</th>
                         <td>
                             <select class="form-control floatL" id="status">
-                                <option value="請選擇">請選擇</option>
-                                <option value="0">未刊登</option>
-                                <option value="1">等待刊登</option>
-                                <option value="2">刊登中</option>
-                            </select>
+                                    <option value="請選擇">請選擇</option>
+                                    <option value="0">未刊登</option>
+                                    <option value="1">等待刊登</option>
+                                    <option value="2">刊登中</option>
+                                </select>
                         </td>
                         <th>公告日期</th>
                         <td>
@@ -113,11 +111,8 @@
                         </td>
                     </tr>
                     <tbody id="annList">
-                       
                     </tbody>
-    
                 </table>
-             
             </div>
             <div class="paginationWrap">
                 <nav>
@@ -129,12 +124,11 @@
         </div>
         <!-- /Page Content -->
     </div>
-    
 </template>
 
 <script>
     import FileUploadComponent from "@/components/FileUpload";
-export default {
-  name: "app"
-};
+    export default {
+        name: "app"
+    };
 </script>
