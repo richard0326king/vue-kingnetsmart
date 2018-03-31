@@ -29,9 +29,9 @@
                     <label class="col-lg-2 control-label">公告類型*</label>
                     <div class="col-lg-5">
                         <select id="annType" class="form-control floatL">
-                                            <option value="">法律知識</option>
-                                            <option value="">生活服務</option>
-                                    </select>
+                                                    <option value="">法律知識</option>
+                                                    <option value="">生活服務</option>
+                                            </select>
                     </div>
                 </div>
                 <!-- /公告類型 -->
@@ -52,9 +52,9 @@
                     <label class="col-lg-2 control-label" for="annStatus">是否上架</label>
                     <div class="col-lg-2">
                         <label class="cr-styled" style="padding-top: 8px;">
-                                                        <input type="checkbox" id="annStatus" runat="server" />
-                                                        <i class="glyphicon"></i>
-                                                    </label>
+                                                                <input type="checkbox" id="annStatus" runat="server" />
+                                                                <i class="glyphicon"></i>
+                                                            </label>
                     </div>
                 </div>
                 <!-- /狀態 -->
@@ -63,9 +63,9 @@
                     <label class="col-lg-2 control-label" for="annIsTop">是否置頂</label>
                     <div class="col-lg-2">
                         <label class="cr-styled" style="padding-top: 8px;">
-                                                        <input type="checkbox" id="annIsTop" runat="server" />
-                                                        <i class="glyphicon"></i>
-                                                    </label>
+                                                                <input type="checkbox" id="annIsTop" runat="server" />
+                                                                <i class="glyphicon"></i>
+                                                            </label>
                     </div>
                 </div>
                 <!-- /狀態 -->
@@ -77,33 +77,41 @@
                         </ckeditor>
                     </div>
                 </div>
-                <!-- 社區 -->
+                <!-- banner -->
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">公告社區*</label>
+                    <label class="col-lg-2 control-label">banner</label>
                     <div class="col-lg-8">
                         <FileUploadComponent></FileUploadComponent>
                     </div>
                 </div>
-                <!-- /社區 -->
+                <!-- /banner -->
                 <!-- /內容 -->
-    
             </div>
-    
         </div>
         <!-- /Page Content -->
-    
     </div>
 </template>
 
 <script>
-import Ckeditor from "../components/ckeditor.vue";
-import FileUploadComponent from "@/components/FileUpload";
-
-export default {
-  name: "app",
-  components: {
-    Ckeditor,
-    FileUploadComponent
-  }
-};
+    import Ckeditor from "../components/ckeditor.vue";
+    import FileUploadComponent from "@/components/FileUpload";
+    export default {
+        name: "app",
+        components: {
+            Ckeditor,
+            FileUploadComponent
+        },
+        data() {
+            return {
+                content: '',
+                content1: '',
+                config: {
+                    toolbar: [
+                        ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']
+                    ],
+                    height: 300
+                }
+            }
+        }
+    };
 </script>

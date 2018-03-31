@@ -117,6 +117,7 @@
                     </tbody>
     
                 </table>
+             
             </div>
             <div class="paginationWrap">
                 <nav>
@@ -127,12 +128,12 @@
             <!-- /記錄列表 -->
         </div>
         <!-- /Page Content -->
-    
     </div>
     
 </template>
 
 <script>
+    import FileUploadComponent from "@/components/FileUpload";
 export default {
   name: "app"
 };
