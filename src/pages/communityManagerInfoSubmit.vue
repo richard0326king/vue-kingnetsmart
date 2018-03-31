@@ -41,10 +41,6 @@
                     <div class="col-lg-2">
                         <input class="form-control date" type="text" id="annStart" runat="server" placeholder="請選擇" />
                     </div>
-                    <label class="col-lg-2 control-label">公告迄日</label>
-                    <div class="col-lg-2">
-                        <input class="form-control date" type="text" id="annDue" runat="server" placeholder="請選擇 (非必填)" />
-                    </div>
                 </div>
                 <!-- /日期 -->
                 <!-- /狀態 -->
@@ -72,7 +68,7 @@
                 <!-- 內容 -->
                 <div class="form-group">
                     <label class="col-lg-2 control-label">內容*</label>
-                    <div class="col-lg-10">
+                    <div class="col-lg-8">
                         <ckeditor id="1" v-model="content" :config="config" @blur="onBlur($event)" @focus="onFocus($event)">
                         </ckeditor>
                     </div>
@@ -86,7 +82,32 @@
                 </div>
                 <!-- /banner -->
                 <!-- /內容 -->
+<div class="form-group">
+                    <label class="col-lg-2 control-label">公寓管理條例相關法條</label>
+                    <div class="col-lg-2">
+                       <select name="" id="" class="form-control">
+                           <option value="">第一章</option>
+                           <option value="">第二章</option>
+                           <option value="">第三章</option>
+                           <option value="">第四章</option>
+                       </select>
+                    </div>
+                     <div class="col-lg-2">
+                       <select name="" id="" class="form-control">
+                           <option value="">第四條</option>
+                           <option value="">第十五條</option>
+                           <option value="">第二十二條</option>
+                           <option value="">第二十四條</option>
+                       </select>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="bottom-btn-control">
+            <input type="button" id="sendFake" value="送出" class="btn btn-md btn-primary" data-loading-text="資料傳送中...">
+            <input type="button" value="取消" id="cancel" class="btn btn-md btn-default">
+
+            <input type="button" name="ctl00$main$sendStore" value="送出" onclick="javascript:__doPostBack('ctl00$main$sendStore','')" id="sendStore" style="display: none;">
         </div>
         <!-- /Page Content -->
     </div>

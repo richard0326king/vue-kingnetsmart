@@ -12,7 +12,7 @@
         <!-- /戶別選擇 -->
         <!-- Page Content -->
         <div class="panel-heading">
-            <span class="tb-title">公告列表</span>
+            <span class="tb-title">管理資訊</span>
             <span class="tb-subtitle">可檢視所有公告、刊登時間與狀態。</span>
         </div>
         <div class="panel-body">

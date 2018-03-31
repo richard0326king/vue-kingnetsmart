@@ -45,11 +45,11 @@
                 image: null,
                 imageUrl: '',
                 list: [{
-                        i: "Banner1",
+                        i: "pic1",
                         url: ""
                     },
                     {
-                        i: "Banner2",
+                        i: "pic2",
                         url: ""
                     }
                 ]
@@ -79,20 +79,7 @@
                 this.image = files[0];
                 this.$refs.updateShow[val].style.zIndex = '1'
                 
-            },
-            // 上傳到 firebase
-            // onUpload() {
-            //     const fd = new FormData();
-            //     fd.append('image', this.selectedFile, this.selectedFile.name)
-            //     axios.post('', fd, {
-            //             onUploadProgress: uploadEvent => {
-            //                 console.log('upload progress' + Math.round(uploadEvent.load / uploadEvent.total * 100) + '%')
-            //             }
-            //         })
-            //         .then(res => {
-            //             console.log(res)
-            //         })
-            // }
+            }
         }
     }
 </script>
