@@ -8,7 +8,6 @@
         </ul>
         <ul class="nav navbar-nav pull-right menu nav-tips">
             <li style="display: none;">
-    
                 <br />
                 <a>系統時間：<span id="systemTime" runat="server"></span>(秒)</a>
             </li>

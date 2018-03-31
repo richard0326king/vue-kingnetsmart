@@ -5,15 +5,26 @@ import communityManagerInfoSubmitRouter from '@/pages/communityManagerInfoSubmit
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router ({
   routes: [{
-      path: '/',
-      component: communityManagerInfoRouter
+    path: '/',
+    meta: {
+      title: 'communityManagerInfo'
     },
-    {
-      path: '/communityManagerInfoSubmitRouter',
-      component: communityManagerInfoSubmitRouter
-    }
+    component: communityManagerInfoRouter,
+  },
+  {
+    path: '/communityManagerInfoSubmitRouter',
+    meta: {
+      title: 'communityManagerInfoSubmit'
+    },
+    component: communityManagerInfoSubmitRouter
+  }
 
-  ]
+]
+})
+export default router
+router.beforeEach((to, from, next) => {
+  window.document.title = to.meta.title;
+  next()
 })

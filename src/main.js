@@ -8,7 +8,6 @@ import jQuery from 'jquery'
 global.jQuery = jQuery
 let bootstrap = require('bootstrap')
 
-
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

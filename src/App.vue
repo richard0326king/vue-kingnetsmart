@@ -16,7 +16,7 @@
     <header-component></header-component>
     <div class="container">
       <div class="panel panel-default">
-        <router-view></router-view>
+        <router-view v-title="title"></router-view>
       </div>
     </div>
   </div>
