@@ -10,7 +10,7 @@
         <input type="hidden" id="comList" runat="server" />
         <!-- Page Content -->
         <div class="panel-heading">
-            <span class="tb-title">新增公告</span>
+            <span class="tb-title">管理資訊</span>
             <span class="tb-tips floatR">*為必填</span>
         </div>
         <div class="padding-md clearfix" style="padding-bottom: 0!important;">
@@ -29,9 +29,9 @@
                     <label class="col-lg-2 control-label">公告類型*</label>
                     <div class="col-lg-5">
                         <select id="annType" class="form-control floatL">
-                                                        <option value="">法律知識</option>
-                                                        <option value="">生活服務</option>
-                                                </select>
+                            <option value="">法律知識</option>
+                            <option value="">生活服務</option>
+                        </select>
                     </div>
                 </div>
                 <!-- /公告類型 -->
@@ -48,9 +48,9 @@
                     <label class="col-lg-2 control-label" for="annStatus">是否上架</label>
                     <div class="col-lg-2">
                         <label class="cr-styled" style="padding-top: 8px;">
-                                                                    <input type="checkbox" id="annStatus" runat="server" />
-                                                                    <i class="glyphicon"></i>
-                                                                </label>
+                            <input type="checkbox" id="annStatus" runat="server" />
+                            <i class="glyphicon"></i>
+                        </label>
                     </div>
                 </div>
                 <!-- /狀態 -->
@@ -59,9 +59,9 @@
                     <label class="col-lg-2 control-label" for="annIsTop">是否置頂</label>
                     <div class="col-lg-2">
                         <label class="cr-styled" style="padding-top: 8px;">
-                                                                    <input type="checkbox" id="annIsTop" runat="server" />
-                                                                    <i class="glyphicon"></i>
-                                                                </label>
+                            <input type="checkbox" id="annIsTop" runat="server" />
+                            <i class="glyphicon"></i>
+                        </label>
                     </div>
                 </div>
                 <!-- /狀態 -->
@@ -77,63 +77,115 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">banner</label>
                     <div class="col-lg-8">
-                        <FileUploadComponent></FileUploadComponent>
+                        <file-upload-btn @click="uploadOpen" v-show="isA"></file-upload-btn>
+                        <file-upload v-show="!isA" v-bind:folder="folder" v-for="folder in folders">
+                            <template slot="list " slot-scope="props">
+                            </template>
+                        </file-upload>
                     </div>
                 </div>
                 <!-- /banner -->
                 <!-- /內容 -->
-<div class="form-group">
-                    <label class="col-lg-2 control-label">公寓管理條例相關法條</label>
-                    <div class="col-lg-2">
-                       <select name="" id="" class="form-control">
-                           <option value="">第一章</option>
-                           <option value="">第二章</option>
-                           <option value="">第三章</option>
-                           <option value="">第四章</option>
-                       </select>
+                <div class="form-group ">
+                    <label class="col-lg-2 control-label ">公寓管理條例相關法條</label>
+                    <div class="col-lg-2 ">
+                        <select name=" " id=" " class="form-control ">
+                            <option value=" ">第一章</option>
+                            <option value=" ">第二章</option>
+                            <option value=" ">第三章</option>
+                            <option value=" ">第四章</option>
+                        </select>
                     </div>
-                     <div class="col-lg-2">
-                       <select name="" id="" class="form-control">
-                           <option value="">第四條</option>
-                           <option value="">第十五條</option>
-                           <option value="">第二十二條</option>
-                           <option value="">第二十四條</option>
-                       </select>
+                    <div class="col-lg-2 ">
+                        <select name=" " id=" " class="form-control ">
+                            <option value=" ">第四條</option>
+                            <option value=" ">第十五條</option>
+                            <option value=" ">第二十二條</option>
+                            <option value=" ">第二十四條</option>
+                        </select>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="bottom-btn-control">
-            <input type="button" id="sendFake" value="送出" class="btn btn-md btn-primary" data-loading-text="資料傳送中...">
-            <input type="button" value="取消" id="cancel" class="btn btn-md btn-default">
-
-            <input type="button" name="ctl00$main$sendStore" value="送出" onclick="javascript:__doPostBack('ctl00$main$sendStore','')" id="sendStore" style="display: none;">
+        <div class="bottom-btn-control ">
+            <input type="button " id="sendFake " value="送出 " class="btn btn-md btn-primary " data-loading-text="資料傳送中... ">
+            <input type="button " value="取消 " id="cancel " class="btn btn-md btn-default ">
+            <input type="button " name="ctl00$main$sendStore " value="送出 " onclick="javascript:__doPostBack( 'ctl00$main$sendStore', '') " id="sendStore " style="display: none; ">
         </div>
         <!-- /Page Content -->
     </div>
 </template>
 
 <script>
-    import Ckeditor from "../components/ckeditor.vue";
-    import FileUploadComponent from "@/components/FileUpload";
-    export default {
-        name: "app",
-        components: {
-            Ckeditor,
-            FileUploadComponent
-        },
-        data() {
-            return {
-                content: '',
-                content1: '',
-                config: {
-                    toolbar: [
-                        ["Bold", "Italic", "-", "NumberedList", "BulletedList", "-", "Outdent", "Indent", "-", "CreateDiv", "-", "BidiLtr", "BidiRtl", "-", "Link", "Unlink", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock", "-", "Table", "Styles", "Format", "Font", "FontSize", "TextColor", "BGColor", "-", "Image", "Source"]
-                    ],
-                    skin: 'kama',
-                    height: 300
-                }
-            }
+import Ckeditor from '../components/ckeditor.vue'
+import FileUpload from '../components/FileUpload.vue'
+import FileUploadBtn from '../components/FileUploadButton.vue'
+export default {
+  name: 'app',
+  components: {
+    Ckeditor,
+    FileUpload,
+    FileUploadBtn
+  },
+  data() {
+    return {
+      content: '',
+      content1: '',
+      isA: true,
+      folders: [
+        {
+          index: 0,
+          i: 'pic1',
+          url: ''
         }
-    };
+      ],
+      config: {
+        toolbar: [
+          [
+            'Bold',
+            'Italic',
+            '-',
+            'NumberedList',
+            'BulletedList',
+            '-',
+            'Outdent',
+            'Indent',
+            '-',
+            'CreateDiv',
+            '-',
+            'BidiLtr',
+            'BidiRtl',
+            '-',
+            'Link',
+            'Unlink',
+            '-',
+            'JustifyLeft',
+            'JustifyCenter',
+            'JustifyRight',
+            'JustifyBlock',
+            '-',
+            'Table',
+            'Styles',
+            'Format',
+            'Font',
+            'FontSize',
+            'TextColor',
+            'BGColor',
+            '-',
+            'Image',
+            'Source'
+          ]
+        ],
+        skin: 'kama',
+        height: 300
+      }
+    }
+  },
+  methods: {
+    uploadOpen() {
+      this.isA = !this.isA
+    }
+  }
+}
 </script>
+
