@@ -78,10 +78,12 @@
                     <label class="col-lg-2 control-label">banner</label>
                     <div class="col-lg-8">
                         <file-upload-btn @click="uploadOpen" v-show="isA"></file-upload-btn>
-                        <file-upload v-show="!isA" v-bind:folder="folder" v-for="folder in folders">
-                            <template slot="list " slot-scope="props">
-                            </template>
-                        </file-upload>
+                        <div v-for="folder in folders">
+                            <file-upload v-show="!isA" v-bind:folder="folder">
+                                <template slot="list " slot-scope="props">
+                                </template>
+                            </file-upload>
+                        </div>
                     </div>
                 </div>
                 <!-- /banner -->
@@ -136,6 +138,11 @@ export default {
         {
           index: 0,
           i: 'pic1',
+          url: ''
+        },
+        {
+          index: 1,
+          i: 'pic2',
           url: ''
         }
       ],

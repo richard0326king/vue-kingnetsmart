@@ -41,7 +41,7 @@ export default {
     onFileRemove(event) {
       var val = event.target.getAttribute('val')
       console.log(event.target)
-      this.folder[val]['url'] = ''
+      this.folder['url'] = ''
       this.$refs.updateShow[val].style.zIndex = '0'
     },
     onFilePicked(event) {
@@ -54,12 +54,11 @@ export default {
       }
       const fileReader = new FileReader()
       fileReader.addEventListener('load', () => {
-        console.log(vobj.folder[val])
-        //vobj.folder[val]['url'] = fileReader.result
+        vobj.folder['url'] = fileReader.result
       })
       fileReader.readAsDataURL(files[0])
       this.image = files[0]
-      this.$refs.updateShow[val].style.zIndex = '1'
+      this.$refs.updateShow.style.zIndex = '1'
     }
   }
 }
