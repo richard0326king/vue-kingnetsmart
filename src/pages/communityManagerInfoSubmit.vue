@@ -54,25 +54,6 @@
                     </div>
                 </div>
                 <!-- /狀態 -->
-                <!-- /狀態 -->
-                <div class="form-group">
-                    <label class="col-lg-2 control-label" for="annIsTop">是否置頂</label>
-                    <div class="col-lg-2">
-                        <label class="cr-styled" style="padding-top: 8px;">
-                            <input type="checkbox" id="annIsTop" runat="server" />
-                            <i class="glyphicon"></i>
-                        </label>
-                    </div>
-                </div>
-                <!-- /狀態 -->
-                <!-- 內容 -->
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">內容*</label>
-                    <div class="col-lg-8">
-                        <ckeditor id="1" v-model="content" :config="config" @blur="onBlur($event)" @focus="onFocus($event)">
-                        </ckeditor>
-                    </div>
-                </div>
                 <!-- banner -->
                 <div class="form-group">
                     <label class="col-lg-2 control-label">banner</label>
@@ -87,6 +68,14 @@
                     </div>
                 </div>
                 <!-- /banner -->
+                <!-- 內容 -->
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">內容*</label>
+                    <div class="col-lg-8">
+                        <ckeditor id="1" v-model="content" :config="config" @blur="onBlur($event)" @focus="onFocus($event)">
+                        </ckeditor>
+                    </div>
+                </div>
                 <!-- /內容 -->
                 <div class="form-group ">
                     <label class="col-lg-2 control-label ">公寓管理條例相關法條</label>
@@ -106,6 +95,20 @@
                             <option value=" ">第二十四條</option>
                         </select>
                     </div>
+                    <div class="col-lg-2">
+                        <button>+</button>
+                    </div>
+                </div>
+                <!-- /內容 -->
+                <div class="form-group ">
+                    <label class="col-lg-2 control-label ">文章來源</label>
+                    <div class="col-lg-2 ">
+                        <select name=" " id=" " class="form-control ">
+                            <option value=" ">請選擇</option>
+                            <option value=" ">事務所</option>
+                        </select>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -138,11 +141,6 @@ export default {
         {
           index: 0,
           i: 'pic1',
-          url: ''
-        },
-        {
-          index: 1,
-          i: 'pic2',
           url: ''
         }
       ],

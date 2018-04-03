@@ -18,7 +18,8 @@
         <div class="panel-body">
             <!-- 資料篩選 -->
             <div class="ann-filter-content">
-                <h4><i class="icon-filter"></i>資料篩選</h4>
+                <h4>
+                    <i class="icon-filter"></i>資料篩選</h4>
                 <table class="table table-bordered ann-tb">
                     <colgroup>
                         <col style="width: 60px" />
@@ -37,17 +38,17 @@
                         <th>公告類型</th>
                         <td>
                             <select class="form-control floatL" id="type">
-                                    <option value="請選擇">請選擇</option>
-                                </select>
+                                <option value="請選擇">請選擇</option>
+                            </select>
                         </td>
                         <th>狀態</th>
                         <td>
                             <select class="form-control floatL" id="status">
-                                    <option value="請選擇">請選擇</option>
-                                    <option value="0">未刊登</option>
-                                    <option value="1">等待刊登</option>
-                                    <option value="2">刊登中</option>
-                                </select>
+                                <option value="請選擇">請選擇</option>
+                                <option value="0">未刊登</option>
+                                <option value="1">等待刊登</option>
+                                <option value="2">刊登中</option>
+                            </select>
                         </td>
                         <th>公告日期</th>
                         <td>
@@ -70,7 +71,8 @@
             <hr />
             <!-- 記錄列表 -->
             <div class="ann-list-content">
-                <h4><i class="icon-list"></i>公告列表</h4>
+                <h4>
+                    <i class="icon-list"></i>公告列表</h4>
                 <router-link class="btn btn-s-md btn-warning addAnnBtn pull-right" to="communityManagerInfoSubmitRouter">新增公告</router-link>
                 <table class="table table-bordered table-hover ann-tb">
                     <colgroup>
@@ -89,11 +91,8 @@
                         <th>公告標題</th>
                         <th>公告類型</th>
                         <th>公告起日</th>
-                        <th>公告迄日</th>
                         <th>狀態</th>
-                        <th>更新時間</th>
                         <th>瀏覽數</th>
-                        <th>置頂</th>
                         <th>操作</th>
                     </tr>
                     <tr id="noBody_ann" style="display: none;">
@@ -127,8 +126,8 @@
 </template>
 
 <script>
-    import FileUploadComponent from "@/components/FileUpload";
-    export default {
-        name: "app"
-    };
+import FileUploadComponent from '@/components/FileUpload'
+export default {
+  name: 'app'
+}
 </script>
