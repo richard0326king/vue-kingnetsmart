@@ -19,19 +19,19 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">標題*</label>
                     <div class="col-lg-5">
-                        <input class="form-control" type="text" id="annTitle" runat="server" placeholder="請輸入標題" />
-                        <span class="help-block">限20個字元</span>
+                        <el-input v-model="input" placeholder="請輸入標題"></el-input>
+                        <span class="help-block mt-4">限20個字元</span>
                     </div>
                 </div>
                 <!-- /標題 -->
-                <!-- 公告類型 -->
+                <!-- 公告類型 BulletinData-->
                 <div class="form-group">
                     <label class="col-lg-2 control-label">公告類型*</label>
                     <div class="col-lg-5">
-                        <select id="annType" class="form-control floatL">
-                            <option value="">法律知識</option>
-                            <option value="">生活服務</option>
-                        </select>
+                        <el-select v-model="BulletinValue" filterable placeholder="請選擇">
+                            <el-option v-for="item in BulletinData" :key="item.value" :label="item.label" :value="item.value">
+                            </el-option>
+                        </el-select>
                     </div>
                 </div>
                 <!-- /公告類型 -->
@@ -39,7 +39,10 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">公告起日*</label>
                     <div class="col-lg-2">
-                        <input class="form-control date" type="text" id="annStart" runat="server" placeholder="請選擇" />
+                        <div class="block">
+                            <el-date-picker v-model="value1" type="date" placeholder="選擇日期">
+                            </el-date-picker>
+                        </div>
                     </div>
                 </div>
                 <!-- /日期 -->
@@ -79,43 +82,46 @@
                 <!-- /內容 -->
                 <div class="form-group ">
                     <label class="col-lg-2 control-label ">公寓管理條例相關法條</label>
-                    <div class="col-lg-2 ">
-                        <select name=" " id=" " class="form-control ">
-                            <option value=" ">第一章</option>
-                            <option value=" ">第二章</option>
-                            <option value=" ">第三章</option>
-                            <option value=" ">第四章</option>
-                        </select>
+                    <div class="col-lg-10">
+                        <el-cascader :options="layerData" :show-all-levels="true" expand-trigger="hover" v-model="selected" @change="isSelected"></el-cascader>
+                        <ul class="listStyle">
+                            <li v-for="item in selected2">
+                                {{item[0]}} / {{item[1]}}
+                                <a @click="removeTodo(item)">
+                                    <i class="el-icon-delete"></i>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="col-lg-2 ">
-                        <select name=" " id=" " class="form-control ">
-                            <option value=" ">第四條</option>
-                            <option value=" ">第十五條</option>
-                            <option value=" ">第二十二條</option>
-                            <option value=" ">第二十四條</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-2">
-                        <button>+</button>
-                    </div>
+
                 </div>
-                <!-- /內容 -->
-                <div class="form-group ">
-                    <label class="col-lg-2 control-label ">文章來源</label>
-                    <div class="col-lg-2 ">
-                        <select name=" " id=" " class="form-control ">
-                            <option value=" ">請選擇</option>
-                            <option value=" ">事務所</option>
-                        </select>
+
+                <!-- hashTag -->
+                <div class="form-group">
+                    <label class="col-lg-2 control-label ">hashTag</label>
+                    <div class="col-sm-8">
+                        <el-checkbox label="陽台" border></el-checkbox>
+                        <el-checkbox label="共用空間" border></el-checkbox>
+                        <el-checkbox label="烤肉" border></el-checkbox>
+                    </div>
+
+                </div>
+                <!-- /文章來源 -->
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">文章來源</label>
+                    <div class="col-lg-2">
+                        <el-select v-model="PaperSouceValue" filterable placeholder="請選擇">
+                            <el-option v-for="item in PaperSouce" :key="item.value" :label="item.label" :value="item.value">
+                            </el-option>
+                        </el-select>
                     </div>
 
                 </div>
             </div>
         </div>
         <div class="bottom-btn-control ">
-            <input type="button " id="sendFake " value="送出 " class="btn btn-md btn-primary " data-loading-text="資料傳送中... ">
-            <input type="button " value="取消 " id="cancel " class="btn btn-md btn-default ">
-            <input type="button " name="ctl00$main$sendStore " value="送出 " onclick="javascript:__doPostBack( 'ctl00$main$sendStore', '') " id="sendStore " style="display: none; ">
+            <el-button type="primary">送出</el-button>
+            <el-button plain>取消</el-button>
         </div>
         <!-- /Page Content -->
     </div>
@@ -135,15 +141,73 @@ export default {
   data() {
     return {
       content: '',
-      content1: '',
+      selected: [],
+      selected2: [],
+      //   公告類型
+      BulletinData: [
+        {
+          value: '選項1',
+          label: '法律知識'
+        },
+        {
+          value: '選項2',
+          label: '民間知識'
+        }
+      ],
+      PaperSouce: [{ value: '選項一', label: '聯晟法律事務法' }],
+      BulletinValue: '',
+      layerDataValue: '',
+      layerDataInValue: '',
+      PaperSouceValue: '',
+      layerData: [
+        {
+          value: '第一章 總則',
+          label: '第一章 總則',
+          children: [
+            {
+              value: '第一條',
+              label: '第一條'
+            },
+            {
+              value: '第二條',
+              label: '第二條'
+            },
+            {
+              value: '第三條',
+              label: '第三條'
+            }
+          ]
+        },
+        {
+          value: '第二章 住戶之權利義務',
+          label: '第二章 住戶之權利義務',
+          children: [
+            {
+              value: '第 4 條 (專有部分)',
+              label: '第 4 條 (專有部分)'
+            },
+            {
+              value: '第 5 條 (專有部分的使用權)',
+              label: '第 5 條 (專有部分的使用權)'
+            },
+            {
+              value: '第 6 條 (住戶的義務)',
+              label: '第 6 條 (住戶的義務)'
+            }
+          ]
+        }
+      ],
+
+      //   圖片上傳
       isA: true,
       folders: [
         {
           index: 0,
-          i: 'pic1',
+          i: '圖片1',
           url: ''
         }
       ],
+      //   Ckeditor
       config: {
         toolbar: [
           [
@@ -181,16 +245,41 @@ export default {
             'Source'
           ]
         ],
-        skin: 'kama',
+        skin: 'moono-lisa',
         height: 300
-      }
+      },
+      //   datepicker
+      value1: '',
+      value2: ''
     }
   },
   methods: {
+    //   圖片上傳
     uploadOpen() {
       this.isA = !this.isA
+    },
+    isSelected() {
+      console.log(this.selected2)
+      this.selected2.push(this.selected)
+      this.selected2.sort()
+    },
+    removeTodo: function(item) {
+      this.selected2.splice(this.selected2.indexOf(item), 1)
     }
   }
 }
 </script>
 
+<style lang="scss">
+.listStyle {
+  margin-top: 12px;
+  padding-left: 0;
+  li {
+    list-style: none;
+    padding: 8px 0;
+    button {
+      margin-right: 8px;
+    }
+  }
+}
+</style>

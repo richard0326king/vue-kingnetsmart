@@ -39,10 +39,8 @@ export default {
   },
   methods: {
     onFileRemove(event) {
-      var val = event.target.getAttribute('val')
-      console.log(event.target)
       this.folder['url'] = ''
-      this.$refs.updateShow[val].style.zIndex = '0'
+      this.$refs.updateShow.style.zIndex = '0'
     },
     onFilePicked(event) {
       let vobj = this
