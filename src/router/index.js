@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import communityManagerInfoRouter from '@/pages/communityManagerInfo'
 import communityManagerInfoSubmitRouter from '@/pages/communityManagerInfoSubmit'
 import addHashTagRouter from '@/pages/addHashTag'
+import addTypeRouter from '@/pages/addType'
 
 Vue.use(Router)
 
@@ -10,7 +11,7 @@ const router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/communityManagerInfo',
+      path: '/',
       meta: {
         title: 'communityManagerInfo'
       },
@@ -24,11 +25,18 @@ const router = new Router({
       component: communityManagerInfoSubmitRouter
     },
     {
-      path: '/',
+      path: '/addHashTag',
       meta: {
         title: 'addHashTag'
       },
       component: addHashTagRouter
+    },
+    {
+      path: '/addType',
+      meta: {
+        title: 'addType'
+      },
+      component: addTypeRouter
     }
   ]
 })

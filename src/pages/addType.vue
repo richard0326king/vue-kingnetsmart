@@ -1,13 +1,13 @@
 <template>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <span class="tb-title">HashTag 管理</span>
+            <span class="tb-title">公告類型管理</span>
             <span class="tb-subtitle">可檢視與修改社區包裹擺放位置的名稱，增進包裹收發有效管理。</span>
         </div>
         <div class="panel-body">
             <!-- 新增位置 -->
             <h4>
-                <i class="icon-add"></i>新增HashTag</h4>
+                <i class="icon-add"></i>新增公告類型</h4>
             <div class="row"
                 style="margin:20px 0">
                 <div class="col-sm-8">
@@ -38,7 +38,7 @@
                             width="50px">
                         </el-table-column>
                         <el-table-column prop="name"
-                            label="位置名稱">
+                            label="公告類型">
                         </el-table-column>
                         <el-table-column label="操作"
                             width="180px">
@@ -66,7 +66,7 @@ export default {
   name: '#app',
   data() {
     return {
-      tableData: [{ name: '海洋' }, { name: '海洋2' }],
+      tableData: [{ name: '公告類型一' }, { name: '公告類型二' }],
       input: ''
     }
   },
@@ -83,7 +83,7 @@ export default {
     // 編輯
     modify(index, row) {
       var that = this
-      this.$prompt('修改位置名稱', '编辑', {
+      this.$prompt('修改公告類型', '编辑', {
         confirmButtonText: '保存',
         cancelButtonText: '取消',
         inputValue: row.name
