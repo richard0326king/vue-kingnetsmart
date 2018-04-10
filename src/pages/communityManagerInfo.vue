@@ -109,7 +109,7 @@
                     <i class="icon-list"></i>公告列表</h4>
                 <router-link class="btn btn-s-md btn-warning addAnnBtn pull-right"
                     to="communityManagerInfoSubmitRouter">新增公告</router-link>
-
+                <!--公告表格-->
                 <el-table v-loading="loading"
                     element-loading-text="資料讀取中"
                     element-loading-spinner="el-icon-loading"
@@ -117,7 +117,7 @@
                     :data="tableData"
                     style="width: 100%"
                     :default-sort="{prop: 'number', order: 'number'}">
-                    <el-table-column prop="number"
+                    <el-table-column type="index"
                         label="#"
                         :index="indexMethod"
                         sortable>
@@ -151,12 +151,15 @@
                     </el-table-column>
                 </el-table>
             </div>
-            <div class="paginationWrap">
-                <nav>
-                    <ul class="pagination"
-                        id="annListPages">
-                    </ul>
-                </nav>
+
+            <!--公告分頁-->
+            <div class="col-xs-12 text-center">
+                <el-pagination background
+                    layout="prev, pager, next"
+                    :page-size="Math.floor($data.tableData.length / 4)"
+                    :page-sizes="10"
+                    :total="$data.tableData.length">
+                </el-pagination>
             </div>
             <!-- /記錄列表 -->
         </div>
@@ -199,7 +202,6 @@ export default {
 
       tableData: [
         {
-          number: 1,
           title: '標題',
           type: '類型',
           status: '',
@@ -208,7 +210,6 @@ export default {
           features: ''
         },
         {
-          number: 2,
           title: '標題',
           type: '類型',
           status: '',
@@ -217,7 +218,6 @@ export default {
           features: ''
         },
         {
-          number: 3,
           title: '標題',
           type: '類型',
           status: '',
@@ -226,7 +226,70 @@ export default {
           features: ''
         },
         {
-          number: 4,
+          title: '標題',
+          type: '類型',
+          status: '',
+          date: '2016-05-04',
+          views: '',
+          features: ''
+        },
+        {
+          title: '標題',
+          type: '類型',
+          status: '',
+          date: '2016-05-01',
+          views: '',
+          features: ''
+        },
+        {
+          title: '標題',
+          type: '類型',
+          status: '',
+          date: '2016-05-02',
+          views: '',
+          features: ''
+        },
+        {
+          title: '標題',
+          type: '類型',
+          status: '',
+          date: '2016-05-03',
+          views: '',
+          features: ''
+        },
+        {
+          title: '標題',
+          type: '類型',
+          status: '',
+          date: '2016-05-04',
+          views: '',
+          features: ''
+        },
+        {
+          title: '標題',
+          type: '類型',
+          status: '',
+          date: '2016-05-03',
+          views: '',
+          features: ''
+        },
+        {
+          title: '標題',
+          type: '類型',
+          status: '',
+          date: '2016-05-04',
+          views: '',
+          features: ''
+        },
+        {
+          title: '標題',
+          type: '類型',
+          status: '',
+          date: '2016-05-03',
+          views: '',
+          features: ''
+        },
+        {
           title: '標題',
           type: '類型',
           status: '',
@@ -243,7 +306,7 @@ export default {
       return row.address
     },
     indexMethod(index) {
-      return index * 2
+      return index + 1
     }
   }
 }
