@@ -8,6 +8,7 @@
             <!-- 新增位置 -->
             <h4>
                 <i class="icon-add"></i>新增HashTag</h4>
+<<<<<<< HEAD
             <div class="form-group">
                 <el-input placeholder="最多10個字元"
                     v-model="input"
@@ -19,6 +20,19 @@
                         新增
                     </el-button>
                 </el-form-item>
+=======
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <el-input placeholder="最多10個字元"
+                        v-model="input"
+                        @keyup.enter="HashAdd"></el-input>
+                    <el-button type="primary"
+                        @click="HashAdd">
+                        新增
+                    </el-button>
+                </div>
+>>>>>>> refs/remotes/origin/master
             </div>
 
             <!-- 新增位置 -->
@@ -27,6 +41,7 @@
                 <h4>
                     <i class="icon-list"></i>位置列表</h4>
                 <span class="help-block">此資訊將於【郵務管理 / 郵務作業 / 備註欄位-位置】提供選擇。</span>
+<<<<<<< HEAD
                 <div class="col-sm-8">
                     <el-table :data="tableData"
                         style="width: 100%">
@@ -47,6 +62,26 @@
                         </el-table-column>
                     </el-table>
                 </div>
+=======
+                <el-table :data="tableData"
+                    style="width: 100%">
+                    <el-table-column prop="index"
+                        label="#">
+                    </el-table-column>
+                    <el-table-column prop="name"
+                        label="位置名稱">
+                    </el-table-column>
+                    <el-table-column label="操作">
+                        <template slot-scope="scope">
+                            <el-button size="mini"
+                                @click="modify(scope.$index, scope.row)">编辑</el-button>
+                            <el-button size="mini"
+                                type="danger"
+                                @click="HashDelete(scope.$index, scope.row)">删除</el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+>>>>>>> refs/remotes/origin/master
             </div>
             <!-- /位置列表 -->
         </div>
