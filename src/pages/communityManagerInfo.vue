@@ -78,14 +78,6 @@
 
                     </tr>
                     <tr>
-                        <th>瀏覽數</th>
-                        <td>
-                            <el-input v-model="viewInput"
-                                placeholder="瀏覽數"
-                                type="number">
-
-                            </el-input>
-                        </td>
                         <td colspan="8"
                             style="text-align: right;">
 

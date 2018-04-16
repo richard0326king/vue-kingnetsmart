@@ -1,5 +1,7 @@
 <template>
-  <div id="showMoreImgBtn" class="fileButton" @click="clicked">
+  <div id="showMoreImgBtn"
+    class="fileButton"
+    @click="clicked">
     <i class="icon-images"></i>
     <div>
       <span class="msg">尚未選擇檔案</span>

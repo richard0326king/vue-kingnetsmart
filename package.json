@@ -13,6 +13,7 @@
     "autoprefixer": "^7.2.6",
     "axios": "^0.18.0",
     "bootstrap": "^3.3.7",
+    "ckeditor-youtube-plugin": "^2.1.10",
     "css-loader": "^0.28.11",
     "element-ui": "^2.3.2",
     "jquery": "^3.3.1",

@@ -1,25 +1,20 @@
 <template>
     <div id="app">
-        <input type="hidden" id="hiddenSn" runat="server" />
-        <input type="hidden" id="hidden_annFiles1" runat="server" />
-        <input type="hidden" id="hidden_annFiles2" runat="server" />
-        <input type="hidden" id="hidden_annFiles3" runat="server" />
-        <input type="hidden" id="hidden_annFiles4" runat="server" />
-        <input type="hidden" id="hidden_annFiles5" runat="server" />
-        <input type="hidden" id="hidden_annFiles6" runat="server" />
-        <input type="hidden" id="comList" runat="server" />
         <!-- Page Content -->
         <div class="panel-heading">
             <span class="tb-title">管理資訊</span>
             <span class="tb-tips floatR">*為必填</span>
         </div>
-        <div class="padding-md clearfix" style="padding-bottom: 0!important;">
-            <div id="formToggleLine" class="annSubmit-container form-horizontal">
+        <div class="padding-md clearfix"
+            style="padding-bottom: 0!important;">
+            <div id="formToggleLine"
+                class="annSubmit-container form-horizontal">
                 <!-- 標題 -->
                 <div class="form-group">
                     <label class="col-lg-2 control-label">標題*</label>
                     <div class="col-lg-5">
-                        <el-input v-model="input" placeholder="請輸入標題"></el-input>
+                        <el-input v-model="title"
+                            placeholder="請輸入標題"></el-input>
                         <span class="help-block mt-4">限20個字元</span>
                     </div>
                 </div>
@@ -28,8 +23,13 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">公告類型*</label>
                     <div class="col-lg-5">
-                        <el-select v-model="BulletinValue" filterable placeholder="請選擇">
-                            <el-option v-for="item in BulletinData" :key="item.value" :label="item.label" :value="item.value">
+                        <el-select v-model="BulletinValue"
+                            filterable
+                            placeholder="請選擇">
+                            <el-option v-for="item in BulletinData"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
                             </el-option>
                         </el-select>
                     </div>
@@ -40,7 +40,9 @@
                     <label class="col-lg-2 control-label">公告起日*</label>
                     <div class="col-lg-2">
                         <div class="block">
-                            <el-date-picker v-model="value1" type="date" placeholder="選擇日期">
+                            <el-date-picker v-model="value1"
+                                type="date"
+                                placeholder="選擇日期">
                             </el-date-picker>
                         </div>
                     </div>
@@ -48,10 +50,14 @@
                 <!-- /日期 -->
                 <!-- /狀態 -->
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" for="annStatus">是否上架</label>
+                    <label class="col-lg-2 control-label"
+                        for="annStatus">是否上架</label>
                     <div class="col-lg-2">
-                        <label class="cr-styled" style="padding-top: 8px;">
-                            <input type="checkbox" id="annStatus" runat="server" />
+                        <label class="cr-styled"
+                            style="padding-top: 8px;">
+                            <input type="checkbox"
+                                id="annStatus"
+                                runat="server" />
                             <i class="glyphicon"></i>
                         </label>
                     </div>
@@ -61,10 +67,13 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">banner</label>
                     <div class="col-lg-8">
-                        <file-upload-btn @click="uploadOpen" v-show="isA"></file-upload-btn>
+                        <file-upload-btn @click="uploadOpen"
+                            v-show="isA"></file-upload-btn>
                         <div v-for="folder in folders">
-                            <file-upload v-show="!isA" v-bind:folder="folder">
-                                <template slot="list " slot-scope="props">
+                            <file-upload v-show="!isA"
+                                v-bind:folder="folder">
+                                <template slot="list "
+                                    slot-scope="props">
                                 </template>
                             </file-upload>
                         </div>
@@ -75,7 +84,11 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">內容*</label>
                     <div class="col-lg-8">
-                        <ckeditor id="1" v-model="content" :config="config" @blur="onBlur($event)" @focus="onFocus($event)">
+                        <ckeditor id="1"
+                            v-model="content"
+                            :config="config"
+                            @blur="onBlur($event)"
+                            @focus="onFocus($event)">
                         </ckeditor>
                     </div>
                 </div>
@@ -83,7 +96,11 @@
                 <div class="form-group ">
                     <label class="col-lg-2 control-label ">公寓管理條例相關法條</label>
                     <div class="col-lg-10">
-                        <el-cascader :options="layerData" :show-all-levels="true" expand-trigger="hover" v-model="selected" @change="isSelected"></el-cascader>
+                        <el-cascader :options="layerData"
+                            :show-all-levels="true"
+                            expand-trigger="hover"
+                            v-model="selected"
+                            @change="isSelected"></el-cascader>
                         <ul class="listStyle">
                             <li v-for="item in selected2">
                                 {{item[0]}} / {{item[1]}}
@@ -100,9 +117,12 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label ">hashTag</label>
                     <div class="col-sm-8">
-                        <el-checkbox label="陽台" border></el-checkbox>
-                        <el-checkbox label="共用空間" border></el-checkbox>
-                        <el-checkbox label="烤肉" border></el-checkbox>
+                        <el-checkbox label="陽台"
+                            border></el-checkbox>
+                        <el-checkbox label="共用空間"
+                            border></el-checkbox>
+                        <el-checkbox label="烤肉"
+                            border></el-checkbox>
                     </div>
 
                 </div>
@@ -110,8 +130,13 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">文章來源</label>
                     <div class="col-lg-2">
-                        <el-select v-model="PaperSouceValue" filterable placeholder="請選擇">
-                            <el-option v-for="item in PaperSouce" :key="item.value" :label="item.label" :value="item.value">
+                        <el-select v-model="PaperSouceValue"
+                            filterable
+                            placeholder="請選擇">
+                            <el-option v-for="item in PaperSouce"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
                             </el-option>
                         </el-select>
                     </div>
@@ -124,6 +149,10 @@
             <el-button plain>取消</el-button>
         </div>
         <!-- /Page Content -->
+        <pre>
+            {{$data.title | json}}
+            {{$data.content | json}}
+        </pre>
     </div>
 </template>
 
@@ -140,6 +169,8 @@ export default {
   },
   data() {
     return {
+      title: '',
+      url: 'http://teepr.com/wp-content/uploads/-000//1/5943413756b9c.jpg',
       content: '',
       selected: [],
       selected2: [],
@@ -210,42 +241,37 @@ export default {
       //   Ckeditor
       config: {
         toolbar: [
-          [
-            'Bold',
-            'Italic',
-            '-',
-            'NumberedList',
-            'BulletedList',
-            '-',
-            'Outdent',
-            'Indent',
-            '-',
-            'CreateDiv',
-            '-',
-            'BidiLtr',
-            'BidiRtl',
-            '-',
-            'Link',
-            'Unlink',
-            '-',
-            'JustifyLeft',
-            'JustifyCenter',
-            'JustifyRight',
-            'JustifyBlock',
-            '-',
-            'Table',
-            'Styles',
-            'Format',
-            'Font',
-            'FontSize',
-            'TextColor',
-            'BGColor',
-            '-',
-            'Image',
-            'Source'
-          ]
+          {
+            name: 'fontStyle',
+            items: [
+              'Bold',
+              'Italic',
+              'NumberedList',
+              'BulletedList',
+              'Outdent',
+              'Indent',
+              'CreateDiv',
+              'BidiLtr',
+              'BidiRtl',
+              'Link',
+              'Unlink',
+              'JustifyLeft',
+              'JustifyCenter',
+              'JustifyRight',
+              'JustifyBlock',
+              'Table'
+            ]
+          },
+          {
+            name: 'fontStyle',
+            items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt']
+          },
+          {
+            name: 'fontStyle',
+            items: ['Styles', 'Format', 'Font', 'FontSize', 'TextColor', 'BGColor', '-', 'Image', 'Source']
+          }
         ],
-        skin: 'moono-lisa',
+        skin: 'kama',
         height: 300
       },
       //   datepicker

@@ -8,7 +8,6 @@ import addTypeRouter from '@/pages/addType'
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'history',
   routes: [
     {
       path: '/',
