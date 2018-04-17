@@ -1,6 +1,10 @@
 <template>
   <div class="ckeditor">
-    <textarea :name="name" :id="id" :value="value" :types="types" :config="config">
+    <textarea :name="name"
+      :id="id"
+      :value="value"
+      :types="types"
+      :config="config">
     </textarea>
   </div>
 </template>
@@ -93,6 +97,15 @@ export default {
     },
     onFocus() {
       this.$emit('focus', this.instance)
+    },
+    onEditorBlur(editor) {
+      console.log('editor blur!', editor)
+    },
+    onEditorFocus(editor) {
+      console.log('editor focus!', editor)
+    },
+    onEditorReady(editor) {
+      console.log('editor ready!', editor)
     }
   }
 }

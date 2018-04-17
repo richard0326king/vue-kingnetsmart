@@ -90,6 +90,15 @@
                             @blur="onBlur($event)"
                             @focus="onFocus($event)">
                         </ckeditor>
+                        <!-- quill-editor -->
+                        <quill-editor ref="myTextEditor"
+                            v-model="contentQuill"
+                            :options="editorOption"
+                            @blur="onEditorBlur($event)"
+                            @focus="onEditorFocus($event)"
+                            @ready="onEditorReady($event)">
+                        </quill-editor>
+
                     </div>
                 </div>
                 <!-- /內容 -->
@@ -149,6 +158,7 @@
             <el-button plain>取消</el-button>
         </div>
         <!-- /Page Content -->
+
         <pre>
             {{$data.title | json}}
             {{$data.content | json}}
@@ -157,6 +167,7 @@
 </template>
 
 <script>
+import { quillEditor } from 'vue-quill-editor'
 import Ckeditor from '../components/ckeditor.vue'
 import FileUpload from '../components/FileUpload.vue'
 import FileUploadBtn from '../components/FileUploadButton.vue'
@@ -165,13 +176,15 @@ export default {
   components: {
     Ckeditor,
     FileUpload,
-    FileUploadBtn
+    FileUploadBtn,
+    quillEditor
   },
   data() {
     return {
       title: '',
       url: 'http://teepr.com/wp-content/uploads/-000//1/5943413756b9c.jpg',
       content: '',
+      contentQuill: '',
       selected: [],
       selected2: [],
       //   公告類型
@@ -273,6 +286,28 @@ export default {
         ],
         skin: 'kama',
         height: 300
+      },
+      //   quill
+
+      editorOption: {
+        modules: {
+          toolbar: [
+            ['bold', 'italic', 'underline', 'strike'],
+            ['blockquote', 'code-block'],
+            [{ header: 1 }, { header: 2 }],
+            [{ list: 'ordered' }, { list: 'bullet' }],
+            [{ script: 'sub' }, { script: 'super' }],
+            [{ indent: '-1' }, { indent: '+1' }],
+            [{ direction: 'rtl' }],
+            [{ size: ['small', false, 'large', 'huge'] }],
+            [{ header: [1, 2, 3, 4, 5, 6, false] }],
+            [{ font: [] }],
+            [{ color: [] }, { background: [] }],
+            [{ align: [] }],
+            ['clean'],
+            ['link', 'image', 'video']
+          ]
+        }
       },
       //   datepicker
       value1: '',
